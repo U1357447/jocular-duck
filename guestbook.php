@@ -8,10 +8,10 @@
 error_reporting(E_ALL);
 
 $link = mysqli_connect(
-    "127.0.0.1", // host
+    "localhost", // host
     "root", // username
     "root", // password
-    "test", // schema name
+    "guestbook", // schema name
 );
 
 if (mysqli_connect_errno()) {
