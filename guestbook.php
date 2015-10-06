@@ -5,14 +5,14 @@
  * @author Mike Jones
  * @since  2015-09-09
  */
-error_reporting(E_ALL);
-
 $link = mysqli_connect(
     "127.0.0.1", // host
-    "root", // username
-    "root", // password
-    "test", // schema name
+    "root",      // username
+    "root",      // password
+    "guestbook"       // schema name
 );
+
+$errors = [];
 
 if (mysqli_connect_errno()) {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -57,11 +57,9 @@ function create_entry($p) {
 $posts = entries();
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    $errors = [];
-
     $new_post = [
-        username => $_POST['user_name'],
-        content => $_POST['content'],
+        'username' => $_POST['user_name'],
+        'content' => $_POST['content'],
     ];
 
     foreach ($new_post as $node => $value) {
@@ -98,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <body>
         <div id="container">
 <?php
-if ($errors) {
+if (!empty($errors)) {
 ?>
         <p>Your entry has some errors:</p>
         <ul>
