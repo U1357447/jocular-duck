@@ -8,7 +8,7 @@
 $link = mysqli_connect(
     "127.0.0.1", // host
     "root",      // username
-    "root",      // password
+    "password",      // password
     "guestbook"       // schema name
 );
 
